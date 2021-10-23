@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ws-reverse-proxy
+  name: ws-reverse-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ws-reverse-proxy
+  template:
+    metadata:
+      labels:
+        app: ws-reverse-proxy
+    spec:
+      containers:
+        - image: nginx:latest
+          name: ws-reverse-proxy
