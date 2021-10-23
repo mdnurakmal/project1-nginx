@@ -18,7 +18,7 @@ spec:
         - image: mdnurakmal/project1-nginx-reverse-proxy:latesst
           name: ws-reverse-proxy
           ports:
-          - containerPort: 443
+          - containerPort: 80
             name: nginx
 
 ---
@@ -34,4 +34,4 @@ spec:
   ports:
     - name: my-https-port
       port: 443
-      targetPort: 443
+      targetPort: 80
