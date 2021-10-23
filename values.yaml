@@ -9,3 +9,8 @@ serverBlock: |-
           proxy_set_header Connection upgrade;
       }
   }
+
+
+containerSecurityContext.runAsNonRoot: false
+
+containerSecurityContext.runAsUser: 0
