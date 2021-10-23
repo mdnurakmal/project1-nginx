@@ -19,14 +19,31 @@ spec:
           name: ws-reverse-proxy
           ports:
           - containerPort: 80
-            name: nginx
+            name: http
+          - containerPort: 443
+            name: https
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: ws-reverse-proxy-service
+  name: ws-reverse-proxy-http-service
+spec:
+  selector:
+    app: ws-reverse-proxy
+  type: NodePort
+  ports:
+    - name: my-http-port
+      port: 80
+      targetPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ws-reverse-proxy-https-service
 spec:
   selector:
     app: ws-reverse-proxy
@@ -34,4 +51,4 @@ spec:
   ports:
     - name: my-https-port
       port: 443
-      targetPort: 80
+      targetPort: 443
