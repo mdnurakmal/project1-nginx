@@ -43,7 +43,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ws-reverse-proxy-https-service
+  name: ws-reverse-proxy-service
 spec:
   selector:
     app: ws-reverse-proxy
