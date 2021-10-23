@@ -17,3 +17,21 @@ spec:
       containers:
         - image: nginx:latest
           name: ws-reverse-proxy
+          ports:
+          - containerPort: 443
+            name: nginx
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ws-reverse-proxy-service
+spec:
+  selector:
+    app: ws-reverse-proxy-service
+  type: NodePort
+  ports:
+    - name: my-https-port
+      port: 443
+      targetPort: 443
