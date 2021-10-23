@@ -15,7 +15,7 @@ spec:
         app: ws-reverse-proxy
     spec:
       containers:
-        - image: mdnurakmal/project1-nginx-reverse-proxy:latesst
+        - image: mdnurakmal/project1-nginx-reverse-proxy:latest
           name: ws-reverse-proxy
           ports:
           - containerPort: 80
