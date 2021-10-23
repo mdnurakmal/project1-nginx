@@ -29,7 +29,7 @@ metadata:
   name: ws-reverse-proxy-service
 spec:
   selector:
-    app: ws-reverse-proxy-service
+    app: ws-reverse-proxy
   type: NodePort
   ports:
     - name: my-https-port
