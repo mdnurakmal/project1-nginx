@@ -23,5 +23,5 @@ RUN rm -rf /etc/nginx/nginx.conf
 COPY http.conf /etc/nginx/nginx.conf
 
 RUN chmod +x docker-entrypoint.sh
-RUN ["/docker-entrypoint.sh"]
-
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["nginx", "-g", "daemon off;"]
