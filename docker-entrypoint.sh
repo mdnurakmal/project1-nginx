@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
 set -eu
 
-echo hello $1
-WEB_URL=$1
+echo hello from docker-entrypoint.sh $_WEB_URL
 
-envsubst '${WEB_URL}' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/nginx.conf
+
+envsubst '${_WEB_URL}' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/nginx.conf
 
 #exec "$@"
