@@ -1,6 +1,19 @@
 steps:
+  - name: "  gcr.io/cloud-builders/kubectl"
+    entrypoint: 'bash'
+    env:
+    - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=my-kubernetes-cluster'
+    args:
+      - '-c'
+      - |
+      
+      echo `kubectl get services spring-boot-service -o=jsonpath='{.spec.clusterIP}'` > WEB_URL
+
   - name: "gcr.io/cloud-builders/docker"
     entrypoint: 'bash'
+    env:
+    - 'WEBSOCKET_URL=$(cat /workspace/WEB_URL)'
     args:
       - '-c'
       - |
@@ -8,6 +21,12 @@ steps:
         docker build -t mdnurakmal/project1-nginx-reverse-proxy:latest . 
         docker push mdnurakmal/project1-nginx-reverse-proxy:latest
     secretEnv: [ 'DOCKERUSERNAME', 'DOCKERPASSWORD' ]
+
+  
+
+
+
+  
   
   # # deploy container image to GKE
   # - name: "gcr.io/cloud-builders/gke-deploy"
