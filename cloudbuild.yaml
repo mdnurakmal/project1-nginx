@@ -23,7 +23,7 @@ steps:
     secretEnv: [ 'DOCKERUSERNAME', 'DOCKERPASSWORD' ]
 
 substitutions:
-  _WEBSOCKET_URL: $(cat /workspace/WEB_URL)
+  _WEBSOCKET_URL: `cat /workspace/WEB_URL`
 
   
 
