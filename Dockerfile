@@ -6,7 +6,7 @@ COPY nginx.conf.template /etc/nginx/conf.d/default.conf.template
 ARG WEB_URL
 
 
-COPY /persistent_volume/WEB_URL .
+RUN echo HELLO $WEB_URL
 
 COPY docker-entrypoint.sh /
 

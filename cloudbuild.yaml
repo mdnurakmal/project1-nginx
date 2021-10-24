@@ -1,29 +1,23 @@
 steps:
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
     entrypoint: 'bash'
-    volumes:
-    - name: 'vol1'
-      path: '/persistent_volume'
     args:
       - '-c'
       - |
         gcloud container clusters get-credentials --zone "$_CLOUDSDK_COMPUTE_ZONE" "$_CLOUDSDK_CONTAINER_CLUSTER"
         echo $_CLOUDSDK_COMPUTE_ZONE
         kubectl version
-        echo `kubectl get services spring-boot-service -o=jsonpath='{.spec.clusterIP}'` > /persistent_volume/WEB_URL
+        echo `kubectl get services spring-boot-service -o=jsonpath='{.spec.clusterIP}'` > /workspace/WEB_URL
 
   - name: "gcr.io/cloud-builders/docker"
     entrypoint: 'bash'
-    volumes:
-    - name: 'vol1'
-      path: '/persistent_volume'
     args:
       - '-c'
       - |
 
         echo hello
         docker login -u=$$DOCKERUSERNAME -p=$$DOCKERPASSWORD
-        docker build --build-arg WEB_URL=$(cat /persistent_volume/WEB_URL) -t mdnurakmal/project1-nginx-reverse-proxy:latest . 
+        docker build --build-arg WEB_URL=$(cat /workspace/WEB_URL) -t mdnurakmal/project1-nginx-reverse-proxy:latest . 
         docker push mdnurakmal/project1-nginx-reverse-proxy:latest
     secretEnv: [ 'DOCKERUSERNAME', 'DOCKERPASSWORD' ]
 
