@@ -23,5 +23,5 @@ RUN rm -rf /etc/nginx/nginx.conf
 COPY http.conf /etc/nginx/nginx.conf
 
 RUN chmod +x docker-entrypoint.sh
-RUN ["/docker-entrypoint.sh", "$WEB_URL"]
+RUN ["/docker-entrypoint.sh", $WEB_URL]
 
