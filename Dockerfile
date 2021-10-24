@@ -4,9 +4,10 @@ FROM nginx:latest
 
 COPY nginx.conf.template /etc/nginx/conf.d/default.conf.template
 ARG WEB_URL
-RUN echo "inside dockerfile " $WEB_URL
 
-COPY /workspace/WEB_URL .
+
+COPY /persistent_volume/WEB_URL .
+
 COPY docker-entrypoint.sh /
 
 COPY http.html /usr/share/nginx/html/http.html
