@@ -9,14 +9,14 @@ steps:
         docker push mdnurakmal/project1-nginx-reverse-proxy:latest
     secretEnv: [ 'DOCKERUSERNAME', 'DOCKERPASSWORD' ]
   
-  # deploy container image to GKE
-  - name: "gcr.io/cloud-builders/gke-deploy"
-    args:
-    - run
-    - --filename=deployment.yaml
-    - --location=my-kubernetes-cluster
-    - --cluster=us-central1-c
-    - --image=mdnurakmal/project1-nginx-reverse-proxy:latest
+  # # deploy container image to GKE
+  # - name: "gcr.io/cloud-builders/gke-deploy"
+  #   args:
+  #   - run
+  #   - --filename=deployment.yaml
+  #   - --location=my-kubernetes-cluster
+  #   - --cluster=us-central1-c
+  #   - --image=mdnurakmal/project1-nginx-reverse-proxy:latest
 
 availableSecrets:
   secretManager:
