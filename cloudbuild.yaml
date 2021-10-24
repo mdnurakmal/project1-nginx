@@ -18,7 +18,7 @@ steps:
       - |
         
         docker login -u=$$DOCKERUSERNAME -p=$$DOCKERPASSWORD
-        docker --build-arg _WEBSOCKET_URL=$(cat /workspace/WEB_URL) build -t mdnurakmal/project1-nginx-reverse-proxy:latest . 
+        docker build --build-arg _WEBSOCKET_URL=$(cat /workspace/WEB_URL) -t mdnurakmal/project1-nginx-reverse-proxy:latest . 
         docker push mdnurakmal/project1-nginx-reverse-proxy:latest
     secretEnv: [ 'DOCKERUSERNAME', 'DOCKERPASSWORD' ]
 
