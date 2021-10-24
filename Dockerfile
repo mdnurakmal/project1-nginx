@@ -3,7 +3,9 @@ FROM nginx:latest
 
 
 COPY nginx.conf.template /etc/nginx/conf.d/default.conf.template
-RUN echo "inside dockerfile " $(cat /workspace/WEB_URL)
+ARG WEB_URL
+RUN echo "inside dockerfile " WEB_URL
+
 COPY /workspace/WEB_URL .
 COPY docker-entrypoint.sh /
 
