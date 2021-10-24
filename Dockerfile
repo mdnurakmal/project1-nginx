@@ -19,5 +19,5 @@ RUN rm -rf /usr/share/nginx/html/index.html
 RUN rm -rf /etc/nginx/nginx.conf
 COPY http.conf /etc/nginx/nginx.conf
 RUN chmod +x docker-entrypoint.sh
-ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT ["/docker-entrypoint.sh", $WEB_URL]
 CMD ["nginx", "-g", "daemon off;"]

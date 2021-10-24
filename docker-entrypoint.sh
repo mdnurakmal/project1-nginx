@@ -3,8 +3,6 @@ set -eu
 
 echo hello
 
-_WEBSOCKET_URL=$(cat WEB_URL)
-
-envsubst '${_WEBSOCKET_URL}' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/nginx.conf
+envsubst '${1}' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/nginx.conf
 
 exec "$@"
