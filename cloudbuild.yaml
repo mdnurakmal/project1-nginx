@@ -1,13 +1,12 @@
 steps:
   - name: "gcr.io/cloud-builders/kubectl"
     entrypoint: 'bash'
-    env:
-    - 'CLOUDSDK_COMPUTE_ZONE=${_CLOUDSDK_COMPUTE_ZONE}'
-    - 'CLOUDSDK_CONTAINER_CLUSTER={_CLOUDSDK_CONTAINER_CLUSTER}'
+    options:
+     substitution_option: 'ALLOW_LOOSE'
     args:
       - '-c'
       - |
-        gcloud container clusters get-credentials --zone "$CLOUDSDK_COMPUTE_ZONE" "$CLOUDSDK_CONTAINER_CLUSTER"
+        gcloud container clusters get-credentials --zone "$_CLOUDSDK_COMPUTE_ZONE" "$_CLOUDSDK_CONTAINER_CLUSTER"
         echo $CLOUDSDK_COMPUTE_ZONE
         kubectl version
         echo `kubectl get services spring-boot-service -o=jsonpath='{.spec.clusterIP}'` > WEB_URL
