@@ -1,10 +1,10 @@
 
 FROM nginx:latest
 
+
 COPY nginx.conf.template /etc/nginx/conf.d/default.conf.template
 
 COPY docker-entrypoint.sh /
-
 
 COPY http.html /usr/share/nginx/html/http.html
 COPY https.html /usr/share/nginx/html/https.html
