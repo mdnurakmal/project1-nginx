@@ -11,6 +11,8 @@ steps:
 
   - name: "gcr.io/cloud-builders/docker"
     entrypoint: 'bash'
+    env:
+      - '_WEBSOCKET_URL=$(cat /workspace/WEB_URL)'
     args:
       - '-c'
       - |
@@ -22,8 +24,6 @@ steps:
         docker push mdnurakmal/project1-nginx-reverse-proxy:latest
     secretEnv: [ 'DOCKERUSERNAME', 'DOCKERPASSWORD' ]
 
-substitutions:
-  _WEBSOCKET_URL: `cat /workspace/WEB_URL`
 
   
 
