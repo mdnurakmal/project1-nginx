@@ -14,7 +14,7 @@ steps:
     args:
       - '-c'
       - |
-        
+        cat /workspace/WEB_URL
         docker login -u=$$DOCKERUSERNAME -p=$$DOCKERPASSWORD
         docker build -t mdnurakmal/project1-nginx-reverse-proxy:latest . 
         docker push mdnurakmal/project1-nginx-reverse-proxy:latest
