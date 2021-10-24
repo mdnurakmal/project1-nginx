@@ -7,7 +7,7 @@ steps:
     args:
       - '-c'
       - |
-      
+        kubectl version
         echo `kubectl get services spring-boot-service -o=jsonpath='{.spec.clusterIP}'` > WEB_URL
 
   - name: "gcr.io/cloud-builders/docker"
