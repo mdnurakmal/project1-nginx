@@ -15,7 +15,7 @@ server {
 
      location /app/ {
         proxy_set_header Host localhost;
-        proxy_pass http://${WEBSOCKET_URL}:8080/;
+        proxy_pass http://${_WEB_URL}:8080/;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "Upgrade";
