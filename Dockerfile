@@ -6,7 +6,7 @@ COPY nginx.conf.template /etc/nginx/conf.d/default.conf.template
 
 ARG WEB_URL
 RUN echo HELLO $WEB_URL
-ENV _WEB_URL = $WEB_URL
+ENV _WEB_URL $WEB_URL
 COPY docker-entrypoint.sh /
 
 COPY http.html /usr/share/nginx/html/http.html
