@@ -1,8 +1,6 @@
 steps:
-  - name: "gcr.io/cloud-builders/kubectl"
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
     entrypoint: 'bash'
-    options:
-     substitution_option: 'ALLOW_LOOSE'
     args:
       - '-c'
       - |
