@@ -12,7 +12,7 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     entrypoint: 'bash'
     substitutions:
-      _WEBSOCKET_URL
+      _WEBSOCKET_URL: test
     args:
       - '-c'
       - |
