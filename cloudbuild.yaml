@@ -16,17 +16,11 @@ steps:
     args:
       - '-c'
       - |
-        cat /workspace/WEB_URL
-        _WEBSOCKET_URL=$(cat /workspace/WEB_URL)
-        echo $_WEBSOCKET_URL
+        
         docker login -u=$$DOCKERUSERNAME -p=$$DOCKERPASSWORD
-        docker build -t mdnurakmal/project1-nginx-reverse-proxy:latest . 
+        docker --build-arg _WEBSOCKET_URL=$(cat /workspace/WEB_URL) build -t mdnurakmal/project1-nginx-reverse-proxy:latest . 
         docker push mdnurakmal/project1-nginx-reverse-proxy:latest
     secretEnv: [ 'DOCKERUSERNAME', 'DOCKERPASSWORD' ]
-
-
-  
-
 
 
   
