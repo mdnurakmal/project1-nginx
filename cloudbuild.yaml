@@ -15,7 +15,7 @@ steps:
       - '-c'
       - |
         cat /workspace/WEB_URL
-        export WEBSOCKET_URL=$(cat /workspace/WEB_URL)
+        WEBSOCKET_URL=$(cat /workspace/WEB_URL)
         echo $WEBSOCKET_URL
         docker login -u=$$DOCKERUSERNAME -p=$$DOCKERPASSWORD
         docker build -t mdnurakmal/project1-nginx-reverse-proxy:latest . 
