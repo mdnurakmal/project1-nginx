@@ -5,7 +5,7 @@ steps:
       - '-c'
       - |
         gcloud container clusters get-credentials --zone "$_CLOUDSDK_COMPUTE_ZONE" "$_CLOUDSDK_CONTAINER_CLUSTER"
-        echo $CLOUDSDK_COMPUTE_ZONE
+        echo $_CLOUDSDK_COMPUTE_ZONE
         kubectl version
         echo `kubectl get services spring-boot-service -o=jsonpath='{.spec.clusterIP}'` > WEB_URL
 
